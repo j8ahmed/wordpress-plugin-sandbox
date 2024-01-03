@@ -27,6 +27,9 @@ Started On: 2024-01-03
 
 ### References:
 
+- [PHP Docs](https://www.php.net/manual/en/)
+- [Plugin handbook - WordPress Docs](https://developer.wordpress.org/plugins/)
+- [Plugin Intro - WordPress Docs](https://developer.wordpress.org/plugins/intro/)
 - []()
 - []()
 - []()
