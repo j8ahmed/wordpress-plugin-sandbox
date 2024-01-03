@@ -37,26 +37,49 @@
 define('WP_DEBUG', true);
 
 if (! class_exists("J8ahmedTestPlugin1") ){
-class J8ahmedTestPlugin1 {
 
-    function activate_plugin() {
-        echo "plugin is activated";
+    class J8ahmedTestPlugin1 {
+
+        function __construct() {
+            add_action("init", [$this, "construct_custom_post_types"]);
+        }
+
+        function activate_plugin() {
+            $this->construct_custom_post_types();
+            flush_rewrite_rules();
+        }
+
+        function deactivate_plugin() {
+            // Unregister the post type, so the rules are no longer in memory.
+            unregister_post_type("j8ahmed_test");
+            // Clear the permalinks to remove our post type's rules from the database.
+            flush_rewrite_rules();
+        }
+
+        function construct_custom_post_types() {
+            register_post_type("j8ahmed_test",
+                array(
+                    "labels" => array(
+                        "name"          => __("Tests", "textdomain"),
+                        "singular_name" => __("Test", "textdomain"),
+                    ),
+                    "public"      => true,
+                    "has_archive" => true,
+                )
+            );
+        }
     }
 
-    function deactivate_plugin() {
-        echo "<h1>plugin is deactivated</h1>";
-    }
-}
 }
 
-if ( class_exists("TestRunner") ){
+if ( class_exists("J8ahmedTestPlugin1") ){
     $j8ahmedTestPlugin1 = new J8ahmedTestPlugin1();
+
+    // activation
+    register_activation_hook( __FILE__, [$j8ahmedTestPlugin1, "activate_plugin"]);
+
+    // deactivation
+    register_deactivation_hook( __FILE__, [$j8ahmedTestPlugin1, "deactivate_plugin"]);
+
+    // uninstall
 }
-
-// activation
-register_activation_hook( __FILE__, [$testRunner, "activate_plugin"]);
-
-// deactivation
-register_deactivation_hook( __FILE__, [$testRunner, "deactivate_plugin"]);
-
-// uninstall
