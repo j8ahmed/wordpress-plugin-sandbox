@@ -58,6 +58,7 @@ if (! class_exists("J8ahmedTestPlugin1") ){
 
         public static function uninstall_plugin() {
             // Get all the posts from our custom post type and delete them from the DB
+            // Still need to test this after I have made a proper dev environment for this plugin and a build process that allows me to easily uninstall and add this plugin back to my site.
             $tests = get_posts([
                 "post_type" => "j8ahmed_test",
                 "numberposts" => -1,
@@ -79,6 +80,24 @@ if (! class_exists("J8ahmedTestPlugin1") ){
                 )
             );
         }
+
+        function enqueue_scripts(){
+            wp_enqueue_style("j8_plugin_test_styles", plugins_url("assets/styles/test_style.css", __FILE__));
+            wp_enqueue_script("j8_plugin_test_scripts", plugins_url("assets/js/test_script.js", __FILE__));
+        }
+
+        function enqueue_admin_scripts(){
+            wp_enqueue_style("j8_plugin_admin_test_styles", plugins_url("assets/styles/admin_test_style.css", __FILE__));
+            wp_enqueue_script("j8_plugin_admin_test_scripts", plugins_url("assets/js/admin_test_script.js", __FILE__));
+        }
+
+        function register_scripts(){
+            add_action("wp_enqueue_scripts", [$this, "enqueue_scripts"]);
+        }
+
+        function register_admin_scripts(){
+            add_action("admin_enqueue_scripts", [$this, "enqueue_admin_scripts"]);
+        }
     }
 
 }
@@ -86,6 +105,13 @@ if (! class_exists("J8ahmedTestPlugin1") ){
 
 if ( class_exists("J8ahmedTestPlugin1") ){
     $j8ahmedTestPlugin1 = new J8ahmedTestPlugin1();
+
+    /* 
+     * Register necessary scripts depending on page / needs... 
+     * For now just add them. remeber we can add conditionals and page checks to make it more efficient.
+     */
+    $j8ahmedTestPlugin1->register_scripts();
+    $j8ahmedTestPlugin1->register_admin_scripts();
 
     // activation
     register_activation_hook( __FILE__, [$j8ahmedTestPlugin1, "activate_plugin"]);
