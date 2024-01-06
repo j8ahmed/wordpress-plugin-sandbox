@@ -56,6 +56,17 @@ if (! class_exists("J8ahmedTestPlugin1") ){
             flush_rewrite_rules();
         }
 
+        public static function uninstall_plugin() {
+            // Get all the posts from our custom post type and delete them from the DB
+            $tests = get_posts([
+                "post_type" => "j8ahmed_test",
+                "numberposts" => -1,
+            ]);
+            foreach( $tests as $test ){
+                wp_delete_post($test->ID, true);
+            }
+        }
+
         function construct_custom_post_types() {
             register_post_type("j8ahmed_test",
                 array(
@@ -72,6 +83,7 @@ if (! class_exists("J8ahmedTestPlugin1") ){
 
 }
 
+
 if ( class_exists("J8ahmedTestPlugin1") ){
     $j8ahmedTestPlugin1 = new J8ahmedTestPlugin1();
 
@@ -82,4 +94,8 @@ if ( class_exists("J8ahmedTestPlugin1") ){
     register_deactivation_hook( __FILE__, [$j8ahmedTestPlugin1, "deactivate_plugin"]);
 
     // uninstall
+    register_uninstall_hook( __FILE__, ["J8ahmedTestPlugin1", "uninstall_plugin"]);
 }
+
+
+
