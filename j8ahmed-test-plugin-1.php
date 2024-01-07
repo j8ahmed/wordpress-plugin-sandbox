@@ -44,11 +44,6 @@ if (! class_exists("J8ahmedTestPlugin1") ){
             add_action("init", [$this, "construct_custom_post_types"]);
         }
 
-        function activate_plugin() {
-            $this->construct_custom_post_types();
-            flush_rewrite_rules();
-        }
-
         function deactivate_plugin() {
             // Unregister the post type, so the rules are no longer in memory.
             unregister_post_type("j8ahmed_test");
@@ -113,8 +108,11 @@ if ( class_exists("J8ahmedTestPlugin1") ){
     $j8ahmedTestPlugin1->register_scripts();
     $j8ahmedTestPlugin1->register_admin_scripts();
 
+    $path = dirname(__FILE__);
+
     // activation
-    register_activation_hook( __FILE__, [$j8ahmedTestPlugin1, "activate_plugin"]);
+    require_once join(DIRECTORY_SEPARATOR, [$path, "inc", "activate_plugin.php"]);
+    register_activation_hook( __FILE__, ["J8ahmedActivatePlugin", "activate"]);
 
     // deactivation
     register_deactivation_hook( __FILE__, [$j8ahmedTestPlugin1, "deactivate_plugin"]);
