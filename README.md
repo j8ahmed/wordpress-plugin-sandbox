@@ -5,7 +5,7 @@ Plugin used to test plugin functionality and features I may potentially want to 
 ## Features
 
 ```
-[ ] 
+[ ] Admin page
 [ ] 
 [ ] 
 [ ] 
@@ -31,6 +31,7 @@ Started On: 2024-01-03
 - [PHP Docs](https://www.php.net/manual/en/)
 - [Plugin handbook - WordPress Docs](https://developer.wordpress.org/plugins/)
 - [Plugin Intro - WordPress Docs](https://developer.wordpress.org/plugins/intro/)
+- [WordPress - Dashicons](https://developer.wordpress.org/resource/dashicons/)
 - []()
 - []()
 - []()
