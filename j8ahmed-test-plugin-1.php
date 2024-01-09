@@ -40,9 +40,40 @@ if (! class_exists("J8ahmedTestPlugin1") ){
 
     class J8ahmedTestPlugin1 {
 
+        const ADMIN_PAGE = "j8ahmed_test_plugin_1";
+        const PATH = __DIR__;
+        protected $plugin;
+
         function __construct() {
+            $this->plugin = plugin_basename(__FILE__);
+
             add_action("init", [$this, "construct_custom_post_types"]);
+            add_action("admin_menu", [$this, "add_admin_pages"]);
+            add_filter("plugin_action_links_$this->plugin", [$this, "add_plugin_links"]);
         }
+
+        function add_admin_pages() {
+            add_menu_page(
+                "J8ahmed Test Plugin",
+                "J8ahmed",
+                "manage_options",
+                self::ADMIN_PAGE,
+                [$this, "load_admin_page"],
+                "dashicons-palmtree",
+                null
+            );
+
+        }
+
+        function add_plugin_links($links){
+            $links[] = "<a href='". admin_url("admin.php?page=" . self::ADMIN_PAGE) ."'>Settings</a>";
+            return $links;
+        }
+
+        function load_admin_page(){
+            require_once join(DIRECTORY_SEPARATOR, [self::PATH, "templates", "test-page.php"]);
+        }
+
 
         function deactivate_plugin() {
             // Unregister the post type, so the rules are no longer in memory.
@@ -108,10 +139,9 @@ if ( class_exists("J8ahmedTestPlugin1") ){
     $j8ahmedTestPlugin1->register_scripts();
     $j8ahmedTestPlugin1->register_admin_scripts();
 
-    $path = dirname(__FILE__);
 
     // activation
-    require_once join(DIRECTORY_SEPARATOR, [$path, "inc", "activate_plugin.php"]);
+    require_once join(DIRECTORY_SEPARATOR, [__DIR__, "inc", "activate_plugin.php"]);
     register_activation_hook( __FILE__, ["J8ahmedActivatePlugin", "activate"]);
 
     // deactivation
