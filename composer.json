@@ -5,7 +5,8 @@
     "license": "GPL",
     "autoload": {
         "psr-4": {
-            "J8ahmed\\TestPlugin1\\": "src/"
+            "J8ahmed\\TestPlugin1\\": "src/",
+            "Inc\\": "inc/"
         }
     },
     "authors": [

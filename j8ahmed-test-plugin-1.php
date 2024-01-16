@@ -36,6 +36,12 @@
 
 define('WP_DEBUG', true);
 
+if ( file_exists(__DIR__ . "/vendor/autoload.php") ){
+    require_once(__DIR__ . "/vendor/autoload.php");
+}
+
+use Inc\Activate;
+
 if (! class_exists("J8ahmedTestPlugin1") ){
 
     class J8ahmedTestPlugin1 {
@@ -141,8 +147,7 @@ if ( class_exists("J8ahmedTestPlugin1") ){
 
 
     // activation
-    require_once join(DIRECTORY_SEPARATOR, [__DIR__, "inc", "activate_plugin.php"]);
-    register_activation_hook( __FILE__, ["J8ahmedActivatePlugin", "activate"]);
+    register_activation_hook( __FILE__, ["\Inc\Activate", "activate"]);
 
     // deactivation
     register_deactivation_hook( __FILE__, [$j8ahmedTestPlugin1, "deactivate_plugin"]);
