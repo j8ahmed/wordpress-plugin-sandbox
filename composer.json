@@ -1,0 +1,19 @@
+{
+    "name": "j8ahmed/test-plugin-1",
+    "description": "A sandbox environment for testing plugin features",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "J8ahmed\\TestPlugin1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jamal Ahmed",
+            "email": "j8ahmed@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
