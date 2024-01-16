@@ -41,6 +41,7 @@ if ( file_exists(__DIR__ . "/vendor/autoload.php") ){
 }
 
 use Inc\Activate;
+use Inc\TestJ8ahmed;
 
 if (! class_exists("J8ahmedTestPlugin1") ){
 
@@ -147,7 +148,7 @@ if ( class_exists("J8ahmedTestPlugin1") ){
 
 
     // activation
-    register_activation_hook( __FILE__, ["\Inc\Activate", "activate"]);
+    register_activation_hook( __FILE__, ["Inc\Activate", "activate"]);
 
     // deactivation
     register_deactivation_hook( __FILE__, [$j8ahmedTestPlugin1, "deactivate_plugin"]);
