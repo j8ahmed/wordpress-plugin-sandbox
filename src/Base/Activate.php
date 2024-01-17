@@ -1,0 +1,34 @@
+<?php
+/*
+ *  @package j8ahmed-test-plugin-1
+ */
+
+namespace J8ahmed\TestPlugin1\Base;
+
+class Activate {
+    const CLASS_PATH = __NAMESPACE__ . "\\Activate";
+
+    public static function init() {
+        // activation
+        register_activation_hook(PLUGIN_FILE, [self::CLASS_PATH, "activate"]);
+    }
+
+    public static function activate() {
+        self::construct_custom_post_types();
+        flush_rewrite_rules();
+    }
+
+    private static function construct_custom_post_types() {
+        register_post_type("j8ahmed_test",
+            array(
+                "labels" => array(
+                    "name"          => __("Tests", "textdomain"),
+                    "singular_name" => __("Test", "textdomain"),
+                ),
+                "public"      => true,
+                "has_archive" => true,
+            )
+        );
+    }
+}
+
