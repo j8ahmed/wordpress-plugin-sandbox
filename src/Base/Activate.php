@@ -6,11 +6,11 @@
 namespace J8ahmed\TestPlugin1\Base;
 
 class Activate {
-    const CLASS_PATH = __NAMESPACE__ . "\\Activate";
 
     public static function init() {
         // activation
-        register_activation_hook(PLUGIN_FILE, [self::CLASS_PATH, "activate"]);
+        register_activation_hook(PLUGIN_FILE, [self::class, "activate"]);
+        echo "testing log file output";
     }
 
     public static function activate() {

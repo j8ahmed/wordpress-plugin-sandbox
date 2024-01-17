@@ -6,7 +6,7 @@
 namespace J8ahmed\TestPlugin1\Pages;
 
 class Admin {
-    const CLASS_PATH = __NAMESPACE__ . "\\Admin";
+    private const CLASS_PATH = __NAMESPACE__ . "\\Admin";
 
     public static function init() {
         // define constants 

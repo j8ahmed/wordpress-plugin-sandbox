@@ -6,7 +6,6 @@
     "autoload": {
         "psr-4": {
             "J8ahmed\\TestPlugin1\\": "src/",
-            "Inc\\": "inc/"
         }
     },
     "authors": [

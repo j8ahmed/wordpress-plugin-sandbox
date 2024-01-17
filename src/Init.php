@@ -15,6 +15,7 @@ final class Init {
         return [
             Base\Activate::class,
             Base\Deactivate::class,
+            Base\Uninstall::class,
             Pages\Admin::class,
         ];
     }
@@ -34,40 +35,17 @@ final class Init {
     }
 
     private static function define_constants($plugin_file) {
-        define("PLUGIN_FILE", $plugin_file);
-        define("PLUGIN_DIR", dirname($plugin_file));
-        define("PLUGIN", plugin_basename($plugin_file));
+        define("PLUGIN_FILE", $plugin_file);                // Full path to core plugin file
+        define("PLUGIN_DIR", dirname($plugin_file));        // Full path to plugin directory
+        define("PLUGIN", plugin_basename($plugin_file));    // <plugin-directory>/<core-plugin-file>
     }
 
 }
 
 
-// use Inc\Activate;
-// use Inc\Deactivate;
-// use Inc\TestJ8ahmed;
-// 
 // if (! class_exists("J8ahmedTestPlugin1") ){
 // 
 //     class J8ahmedTestPlugin1 {
-// 
-//         const PATH = __DIR__;
-//         protected $plugin;
-// 
-//         function __construct() {
-//             $this->plugin = plugin_basename(__FILE__);
-//         }
-// 
-//         public static function uninstall_plugin() {
-//             // Get all the posts from our custom post type and delete them from the DB
-//             // Still need to test this after I have made a proper dev environment for this plugin and a build process that allows me to easily uninstall and add this plugin back to my site.
-//             $tests = get_posts([
-//                 "post_type" => "j8ahmed_test",
-//                 "numberposts" => -1,
-//             ]);
-//             foreach( $tests as $test ){
-//                 wp_delete_post($test->ID, true);
-//             }
-//         }
 // 
 //         function enqueue_scripts(){
 //             wp_enqueue_style("j8_plugin_test_styles", plugins_url("assets/styles/test_style.css", __FILE__));
@@ -93,9 +71,4 @@ final class Init {
 //     $j8ahmedTestPlugin1->register_scripts();
 // 
 // 
-//     // uninstall
-//     register_uninstall_hook( __FILE__, ["J8ahmedTestPlugin1", "uninstall_plugin"]);
 // }
-// 
-// 
-// 

@@ -6,11 +6,10 @@
 namespace J8ahmed\TestPlugin1\Base;
 
 class Deactivate {
-    const CLASS_PATH = __NAMESPACE__ . "\\Deactivate";
 
     public static function init() {
-        // activation
-        register_deactivation_hook(PLUGIN_FILE, [self::CLASS_PATH, "deactivate"]);
+        // WP register deactivation function
+        register_deactivation_hook(PLUGIN_FILE, [self::class, "deactivate"]);
     }
 
     public static function deactivate() {
