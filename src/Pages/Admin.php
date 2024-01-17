@@ -6,15 +6,13 @@
 namespace J8ahmed\TestPlugin1\Pages;
 
 class Admin {
-    private const CLASS_PATH = __NAMESPACE__ . "\\Admin";
 
     public static function init() {
         // define constants 
         define("ADMIN_PAGE",  "j8ahmed_test_plugin_1");
 
-        add_action("admin_menu", [self::CLASS_PATH, "add_admin_pages"]);
-        add_filter("plugin_action_links_" . PLUGIN, [self::CLASS_PATH, "add_plugin_links"]);
-        add_action("init", [self::CLASS_PATH, "construct_custom_post_types"]);
+        add_action("admin_menu", [self::class, "add_admin_pages"]);
+        add_action("init", [self::class, "construct_custom_post_types"]);
 
         // Register styles & scripts
         self::register_scripts();
@@ -28,7 +26,7 @@ class Admin {
             "J8ahmed",
             "manage_options",
             ADMIN_PAGE,
-            [self::CLASS_PATH, "load_admin_page"],
+            [self::class, "load_admin_page"],
             "dashicons-palmtree",
             null
         );
@@ -36,11 +34,6 @@ class Admin {
 
     public static function load_admin_page(){
         require_once join(DIRECTORY_SEPARATOR, [PLUGIN_DIR, "templates", "test-page.php"]);
-    }
-
-    public static function add_plugin_links($links){
-        $links[] = "<a href='". admin_url("admin.php?page=" . ADMIN_PAGE) ."'>Settings</a>";
-        return $links;
     }
 
     public static function construct_custom_post_types() {
@@ -57,7 +50,7 @@ class Admin {
     }
 
     private static function register_scripts(){
-        add_action("admin_enqueue_scripts", [self::CLASS_PATH, "enqueue_scripts"]);
+        add_action("admin_enqueue_scripts", [self::class, "enqueue_scripts"]);
     }
 
     public static function enqueue_scripts(){

@@ -10,7 +10,6 @@ class Activate {
     public static function init() {
         // activation
         register_activation_hook(PLUGIN_FILE, [self::class, "activate"]);
-        echo "testing log file output";
     }
 
     public static function activate() {

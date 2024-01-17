@@ -16,6 +16,7 @@ final class Init {
             Base\Activate::class,
             Base\Deactivate::class,
             Base\Uninstall::class,
+            Base\SettingsLinks::class,
             Pages\Admin::class,
         ];
     }

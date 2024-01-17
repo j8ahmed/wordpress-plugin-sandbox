@@ -50,6 +50,11 @@ if ( file_exists(__DIR__ . "/vendor/autoload.php") ){
 if (class_exists('J8ahmed\TestPlugin1\Init')){
     // Initialize Plugin
     J8ahmed\TestPlugin1\Init::init(__FILE__);
+
+
+    // add activation and deactivation hooks
+    // register_activation_hook(PLUGIN_FILE, [self::class, "activate"]);
+    // register_deactivation_hook(PLUGIN_FILE, [self::class, "deactivate"]);
 }
 
 
