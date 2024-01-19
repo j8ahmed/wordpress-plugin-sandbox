@@ -30,6 +30,26 @@ class Admin {
             "dashicons-palmtree",
             null
         );
+
+        add_submenu_page(
+            ADMIN_PAGE,
+            "J8ahmed Test Plugin",
+            "Settings",
+            "manage_options",
+            ADMIN_PAGE,
+            [self::class, "load_admin_page"],
+            null
+        );
+
+        add_submenu_page(
+            ADMIN_PAGE,
+            "J8ahmed Test Plugin",
+            "Sub 2",
+            "manage_options",
+            ADMIN_PAGE . "_sub_2",
+            [self::class, "load_admin_page"],
+            null
+        );
     }
 
     public static function load_admin_page(){
