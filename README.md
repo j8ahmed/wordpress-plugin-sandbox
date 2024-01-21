@@ -33,7 +33,7 @@ Started On: 2024-01-03
 - [Plugin Intro - WordPress Docs](https://developer.wordpress.org/plugins/intro/)
 - [WordPress - Dashicons](https://developer.wordpress.org/resource/dashicons/)
 - [WordPress - Roles and Capabilities](https://wordpress.org/documentation/article/roles-and-capabilities/)
-- []()
+- [phpdotenv - Composer package](https://github.com/vlucas/phpdotenv)
 - []()
 - []()
 - []()
