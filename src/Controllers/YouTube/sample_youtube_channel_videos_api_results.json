@@ -1,0 +1,246 @@
+{
+  "kind": "youtube#playlistItemListResponse",
+  "etag": "VrXSM09RxvRlGXOIifeQp9bMD0Q",
+  "nextPageToken": "EAAaelBUOkNBVWlFREV5UlVaQ00wSXhRelUzUkVVMFJURW9BVWlOcnQ3eXR0LURBMUFCV2pZaVEyaG9WbFpYUm5STk1VWllUVVYwVUZvd2JHbFdNMUp6V210YU5rMXVielJOTTJOVFEzZHBaakExVTNSQ2FFUkpjV0ZKYkNJ",
+  "items": [
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "RXHlRd8P-gWG7zg9nArgNnjGzgk",
+      "id": "VVVhbTNRVzBLT2dJYld0bGZGejJ6ODN3LjlqelZKS0d4N0w4",
+      "snippet": {
+        "publishedAt": "2024-01-14T16:02:27Z",
+        "channelId": "UCam3QW0KOgIbWtlfFz2z83w",
+        "title": "Jamal's Pet Store - Pen 100 From The Most Hearted Pen's of 2023 - CodePen",
+        "description": "I rebuilt Jackie Zen's Pen using React. It was fairly straightforward with some cool features and great design. This video highlights some of the takeaways from the process.\n\nIn this series I will attempt to go over all 100 of the \"Most Hearted Pen's of 2023\" on CodePen. I will breakdown the core challenges with each pen and highlight some of the useful features.\r\n\r\n\n2023 Most Hearted Pens List: https://codepen.io/2023/popular/pens/1\r\n\nJackie's Pet Store Pen (original): https://codepen.io/jackiezen/full/oNJMOvZ\n\nGitHub Repo for my version: https://github.com/j8ahmed/jamals_pet_store\r\n\nPersonal Website\r\nhttps://J8ahmed.com\r\n\r\nFollow The Self Taught (currently J8ahmed):\r\nhttps://twitter.com/j8ahmed\r\nhttps://www.instagram.com/j8_ahmed/",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/9jzVJKGx7L8/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/9jzVJKGx7L8/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/9jzVJKGx7L8/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/9jzVJKGx7L8/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/9jzVJKGx7L8/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Self Taught Dev",
+        "playlistId": "UUam3QW0KOgIbWtlfFz2z83w",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "9jzVJKGx7L8"
+        },
+        "videoOwnerChannelTitle": "Self Taught Dev",
+        "videoOwnerChannelId": "UCam3QW0KOgIbWtlfFz2z83w"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "yfCkwQEXjuwvfhLgqhgjjfvdBlA",
+      "id": "VVVhbTNRVzBLT2dJYld0bGZGejJ6ODN3LlUwbnIxN1pmTzNv",
+      "snippet": {
+        "publishedAt": "2023-09-29T13:39:45Z",
+        "channelId": "UCam3QW0KOgIbWtlfFz2z83w",
+        "title": "What We Can Learn From @NeetCode's  Comeback After Quitting Amazon",
+        "description": "In this video I reflect on @NeetCode 's journey and how it relates to all self taught devs, especially my own journey @NeetCode's video: https://www.youtube.com/watch?v=QHXET1G9Y5U \n\nWebsite\nhttps://J8ahmed.com/\n\nFollow The Self Taught (currently J8ahmed):\nhttps://twitter.com/j8ahmed\nhttps://github.com/j8ahmed\nhttps://www.instagram.com/j8_ahmed/",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/U0nr17ZfO3o/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/U0nr17ZfO3o/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/U0nr17ZfO3o/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/U0nr17ZfO3o/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "Self Taught Dev",
+        "playlistId": "UUam3QW0KOgIbWtlfFz2z83w",
+        "position": 1,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "U0nr17ZfO3o"
+        },
+        "videoOwnerChannelTitle": "Self Taught Dev",
+        "videoOwnerChannelId": "UCam3QW0KOgIbWtlfFz2z83w"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "3b3GSWFuzdGrDiM0RkIxn4xKqBg",
+      "id": "VVVhbTNRVzBLT2dJYld0bGZGejJ6ODN3LnpZOWxYcXhoS3hV",
+      "snippet": {
+        "publishedAt": "2023-09-23T03:16:10Z",
+        "channelId": "UCam3QW0KOgIbWtlfFz2z83w",
+        "title": "Review of a Full Stack Google Drive Clone Tutorial from @freecodecamp",
+        "description": "In this video I review the tutorial: https://youtu.be/gwOVynGnDZA?feature=shared and talk about the positives and negatives you might face.\n\nYou can check out the project at my GitHub Repo:\nhttps://github.com/j8ahmed/gdrive-clone/\n\nWebsite\nhttps://J8ahmed.com\n\nFollow The Self Taught (currently J8ahmed):\nhttps://twitter.com/j8ahmed\nhttps://www.instagram.com/j8_ahmed/",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/zY9lXqxhKxU/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/zY9lXqxhKxU/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/zY9lXqxhKxU/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/zY9lXqxhKxU/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "Self Taught Dev",
+        "playlistId": "UUam3QW0KOgIbWtlfFz2z83w",
+        "position": 2,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "zY9lXqxhKxU"
+        },
+        "videoOwnerChannelTitle": "Self Taught Dev",
+        "videoOwnerChannelId": "UCam3QW0KOgIbWtlfFz2z83w"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "eFItbnmtkP-Nknpv-A77XSZuxf0",
+      "id": "VVVhbTNRVzBLT2dJYld0bGZGejJ6ODN3LlZWay1LLThjTzJZ",
+      "snippet": {
+        "publishedAt": "2021-05-21T05:26:13Z",
+        "channelId": "UCam3QW0KOgIbWtlfFz2z83w",
+        "title": "Adding Dark Mode to Your Website (Beginner friendly)",
+        "description": "Learn how to add Dark mode to your website with persistence and automatic theme loading that matches your system's preferred theme settings.\n\nMatching Article\r\nhttps://j8ahmed.com/2021/05/18/how-to-add-dark-mode-to-your-website/\r\n\r\nFollow The Self Taught (J8ahmed):\r\nhttps://twitter.com/j8ahmed\r\nhttps://www.instagram.com/j8_ahmed/",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/VVk-K-8cO2Y/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/VVk-K-8cO2Y/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/VVk-K-8cO2Y/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/VVk-K-8cO2Y/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/VVk-K-8cO2Y/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Self Taught Dev",
+        "playlistId": "UUam3QW0KOgIbWtlfFz2z83w",
+        "position": 3,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "VVk-K-8cO2Y"
+        },
+        "videoOwnerChannelTitle": "Self Taught Dev",
+        "videoOwnerChannelId": "UCam3QW0KOgIbWtlfFz2z83w"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "UemL-zAjtVFILxbVkmiCvMLDyf0",
+      "id": "VVVhbTNRVzBLT2dJYld0bGZGejJ6ODN3LlNnV2N4OEppVnZR",
+      "snippet": {
+        "publishedAt": "2020-08-13T02:21:01Z",
+        "channelId": "UCam3QW0KOgIbWtlfFz2z83w",
+        "title": "Circular Pop Out Animation - Menus GSAP",
+        "description": "In this video I walk through the principle idea behind a circular menu animation. Using GSAP, SVGs, and a JavaScript 'for' loop\n \r\nCompleted CodePen Pen:\r\nhttps://codepen.io/J8ahmed/pen/zYrXbRd\r\n\nWork-through CodePen Pen:\nhttps://codepen.io/J8ahmed/pen/NWNGvQL\n\nWebsite\r\nhttps://J8ahmed.com\r\n\r\nFollow The Self Taught Dev (J8ahmed):\r\nhttps://twitter.com/j8ahmed\r\nhttps://www.instagram.com/j8_ahmed/",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/SgWcx8JiVvQ/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/SgWcx8JiVvQ/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/SgWcx8JiVvQ/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/SgWcx8JiVvQ/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          }
+        },
+        "channelTitle": "Self Taught Dev",
+        "playlistId": "UUam3QW0KOgIbWtlfFz2z83w",
+        "position": 4,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "SgWcx8JiVvQ"
+        },
+        "videoOwnerChannelTitle": "Self Taught Dev",
+        "videoOwnerChannelId": "UCam3QW0KOgIbWtlfFz2z83w"
+      },
+      "status": {
+        "privacyStatus": "public"
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 27,
+    "resultsPerPage": 5
+  }
+}

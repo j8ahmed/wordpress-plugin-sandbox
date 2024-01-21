@@ -1,0 +1,32 @@
+ul.j8-youtube-playlist-container {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 32px 0;
+  list-style: none;
+  display: grid;
+  gap: 32px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+ul.j8-youtube-playlist-container li.playlist-item {
+  transition: all 0.2s ease;
+}
+ul.j8-youtube-playlist-container li.playlist-item:hover {
+  transform: scale(1.01);
+}
+ul.j8-youtube-playlist-container li.playlist-item div.img-container {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1.91/1;
+}
+ul.j8-youtube-playlist-container li.playlist-item div.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ul.j8-youtube-playlist-container li.playlist-item div.text-container {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=j8_youtube.css.map */
