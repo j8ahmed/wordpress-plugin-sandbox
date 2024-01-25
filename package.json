@@ -1,0 +1,22 @@
+{
+  "name": "j8ahmed-test-plugin-1",
+  "version": "1.0.0",
+  "description": "Plugin sandbox enviornment for feature testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j8ahmed/wordpress-plugin-sandbox.git"
+  },
+  "author": "Jamal J8 Ahmed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j8ahmed/wordpress-plugin-sandbox/issues"
+  },
+  "homepage": "https://github.com/j8ahmed/wordpress-plugin-sandbox#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
