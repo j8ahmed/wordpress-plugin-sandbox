@@ -53,7 +53,7 @@ class Admin {
     }
 
     public static function load_admin_page(){
-        require_once join(DIRECTORY_SEPARATOR, [PLUGIN_DIR, "templates", "test-page.php"]);
+        require_once join(DIRECTORY_SEPARATOR, [PLUGIN_DIR, "src", "templates", "test-page.php"]);
     }
 
     public static function construct_custom_post_types() {

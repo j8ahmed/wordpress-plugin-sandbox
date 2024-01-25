@@ -19,7 +19,7 @@ final class Init {
             Base\SettingsLinks::class,
             Pages\Admin::class,
             Test\Settings::class,
-            Controllers\YouTube\Main::class,
+            //Controllers\YouTube\Main::class,
         ];
     }
 
