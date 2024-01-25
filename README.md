@@ -1,8 +1,19 @@
-# WordPress Plugin Playground
+# WordPress Plugin Sandbox
 
 Plugin used to test plugin functionality and features I may potentially want to add to other plugins. Essentially a sandbox of sorts.
 
-## Features
+## Motivation
+
+Add a "Motivation/ Why It was Built / Why Use it" section briefly highlighting the purpose of the project
+
+## Quick Start
+
+Add a "Quick Start" section on how to quickly use the package / project
+
+
+## Usage / Features
+
+Add a "Usage" section that further details how to use the package / project. Show off all the cool features.
 
 ```
 [ ] Admin page
@@ -13,6 +24,11 @@ Plugin used to test plugin functionality and features I may potentially want to 
 [ ] 
 [ ] 
 ```
+
+## Contributing
+
+Add a "Contributing" section that details how someone can "run" the tool with more details and potentially help on a technical level.
+
 
 ## Bugs / Fixes
 
