@@ -72,11 +72,19 @@ function copyDistToPluginFolder() {
         .pipe(dest(pluginFolder));
 }
 
+function watchStyles() {
+    watch(["src/**/*.scss"],
+        {},
+        buildStyles
+    );
+}
+
 // exports.watch = function watch() {
 //     watch('./sass/**/*.scss', ['sass']);
 // };
 
 exports.buildStyles = buildStyles;
+exports.watchStyles = watchStyles;
 
 exports.default = series(
     parallel(
