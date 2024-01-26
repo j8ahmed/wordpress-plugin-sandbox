@@ -1,34 +1,31 @@
 'use strict';
 /*
+ * Development environment must be placed with plugins directory for this to work.
+ * Currently, I am not sure why Gulp cannot process a directory path like "/c/xampp/htdocs/..." This may be related to how the directory path is being translated for globbing and also handling windows file systems under the hood. Either way, we have this limitation as a result.
+ * I will look into this later but for now it's not worth the effort as I might move away from using Gulp in the future.
+ *
  * Tasks:
- * [ ] Run update on YouTube feature of plugin using build script.
+ * [x] Run update on YouTube feature of plugin using build script.
  *
  * [ ] Compile Sass files into minified css in the same folder
  * [ ] Transpile Modern JavaScript into older JavaScript
  * [ ] Compile JavaScript into minified JavaScript
- * [ ] Live reloads of changes in JavaScript and Sass
- * [ ] Live reloads of changes in JavaScript and Sass
+ * [ ] Live reloads:
+ *     [ ] Live reloads of changes in JavaScript and Sass
+ *     [ ] Live reloads of changes in JavaScript and Sass
+ *     [ ] Live reloads of changes in PHP files
  *
  * Bonus: 
- * [ ] Compile PHP to distribution (maybe name it 'inc' directory)
+ * [x] Compile PHP to distribution (only copying so far - need to look into compiling it further to make it potentially more effecient to run and perhaps capable of obsfucating the code, idk yet)
  * [ ] 
  *  
- *
- *
- *
-
-I have my project basically all in the `src` directory.
-
-
-1. Build a gulp script to transpile JS, SCSS, bundle theme, minify, and watch and automatically reload on file changes, even for PHP - [reference - learn gulp from scratch playlist](https://www.youtube.com/watch?v=oRoy1fJbMls&list=PLriKzYyLb28lp0z-OMB5EYh0OHaKe91RV&pp=iAQB)  
-    - Update / Write [Gulp JS](https://gulpjs.com/docs/en/getting-started/quick-start) notes
-        - common error in gulp not reading files - [stackoverflow](https://stackoverflow.com/questions/22391527/gulps-gulp-watch-not-triggered-for-new-or-deleted-files)
-    - See if gulp can compile PHP. Might need to be a separate task.
-
  */
 
 const { src, dest, watch, parallel, series } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
+
+// Set the plugin folder absolute file path
+const pluginFolder = "../../j8ahmed-test-plugin-1"
 
 function buildStyles() {
     // compile all sass files into css, ignore partials
@@ -52,18 +49,26 @@ function copyPHPFilesFromVendor() {
         .pipe(dest('dist/vendor'));
 }
 
+function copyDistToPluginFolder() {
+    return src(["dist/**/*"])
+        .pipe(dest(pluginFolder));
+}
+
 exports.buildStyles = buildStyles;
 
 exports.watch = function watch() {
     watch('./sass/**/*.scss', ['sass']);
 };
 
-exports.default = parallel(
-    buildStyles,
-    copyPHPFilesFromSrc,
-    copyPHPFilesFromVendor,
-    copyCorePluginFile,
-)
+exports.default = series(
+    parallel(
+        buildStyles,
+        copyPHPFilesFromSrc,
+        copyPHPFilesFromVendor,
+        copyCorePluginFile,
+    ),
+    copyDistToPluginFolder,
+);
 
 // exports.default = function default() {
 //     // The task will be run (concurrently) for every change made
@@ -72,3 +77,4 @@ exports.default = parallel(
 //         cb();
 //     });
 // }
+// testing adding a new line
