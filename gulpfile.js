@@ -21,17 +21,32 @@
  *  
  */
 
+
+
 const { src, dest, watch, parallel, series } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
+const rename = require("gulp-rename");
 
 // Set the plugin folder absolute file path
 const pluginFolder = "../../j8ahmed-test-plugin-1"
 
-function buildStyles() {
-    // compile all sass files into css, ignore partials
-    return src(["src/**/*.scss", "!src/**/_*.scss"])
-        .pipe(sass().on("error", sass.logError))
-        .pipe(dest('dist/src'));
+// Async to allow for importing of ESM autoprefixer package in CommonJS.
+async function buildStyles() {
+    try{
+        const autoprefixer = (await import("./node_modules/gulp-autoprefixer/index.js")).default;
+
+        // compile all sass files into css, ignore partials
+        return src(["src/**/*.scss", "!src/**/_*.scss"])
+            .pipe(sass({outputStyle: "compressed"})
+                .on("error", sass.logError))
+            .pipe(autoprefixer({
+                cascade: false
+            }))
+            .pipe(rename({suffix: ".min"}))
+            .pipe(dest('dist/src'));
+    }catch(e){
+        console.error(e, "problem with autoprefixer import");
+    }
 };
 
 function copyCorePluginFile() {
@@ -54,11 +69,11 @@ function copyDistToPluginFolder() {
         .pipe(dest(pluginFolder));
 }
 
-exports.buildStyles = buildStyles;
+// exports.watch = function watch() {
+//     watch('./sass/**/*.scss', ['sass']);
+// };
 
-exports.watch = function watch() {
-    watch('./sass/**/*.scss', ['sass']);
-};
+exports.buildStyles = buildStyles;
 
 exports.default = series(
     parallel(
