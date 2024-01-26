@@ -54,5 +54,6 @@ Started On: 2024-01-03
 - [`gulp-rename` - NPM Docs](https://www.npmjs.com/package/gulp-rename)
 - [`gulp-sass` - NPM Docs](https://www.npmjs.com/package/gulp-sass)
 - [`gulp-autoprefixer` - NPM Docs](https://www.npmjs.com/package/gulp-autoprefixer)
+- [`gulp-sourcemaps` - NPM Docs](https://www.npmjs.com/package/gulp-sourcemaps)
 - []()
 - []()

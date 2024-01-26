@@ -26,6 +26,7 @@
 const { src, dest, watch, parallel, series } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const rename = require("gulp-rename");
+const sourcemaps = require("gulp-sourcemaps");
 
 // Set the plugin folder absolute file path
 const pluginFolder = "../../j8ahmed-test-plugin-1"
@@ -37,12 +38,14 @@ async function buildStyles() {
 
         // compile all sass files into css, ignore partials
         return src(["src/**/*.scss", "!src/**/_*.scss"])
+            .pipe(sourcemaps.init())
             .pipe(sass({outputStyle: "compressed"})
                 .on("error", sass.logError))
             .pipe(autoprefixer({
                 cascade: false
             }))
             .pipe(rename({suffix: ".min"}))
+            .pipe(sourcemaps.write("./"))
             .pipe(dest('dist/src'));
     }catch(e){
         console.error(e, "problem with autoprefixer import");
