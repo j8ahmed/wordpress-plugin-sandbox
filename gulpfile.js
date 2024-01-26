@@ -46,7 +46,7 @@ async function buildStyles() {
             }))
             .pipe(rename({suffix: ".min"}))
             .pipe(sourcemaps.write("./"))
-            .pipe(dest('dist/src'));
+            .pipe(dest(pluginFolder + '/src'));
     }catch(e){
         console.error(e, "problem with autoprefixer import");
     }
@@ -54,23 +54,23 @@ async function buildStyles() {
 
 function copyCorePluginFile() {
     return src(["./*.php"])
-        .pipe(dest('dist/'));
+        .pipe(dest(pluginFolder));
 }
 
 function copyPHPFilesFromSrc() {
     return src(["src/**/*.php"])
-        .pipe(dest('dist/src'));
+        .pipe(dest(pluginFolder + '/src'));
 }
 
 function copyPHPFilesFromVendor() {
     return src(["vendor/**/*.php"])
-        .pipe(dest('dist/vendor'));
+        .pipe(dest(pluginFolder + '/vendor'));
 }
 
-function copyDistToPluginFolder() {
-    return src(["dist/**/*"])
-        .pipe(dest(pluginFolder));
-}
+//function copyDistToPluginFolder() {
+//    return src(["dist/**/*"])
+//        .pipe(dest(pluginFolder));
+//}
 
 function watchStyles() {
     watch(["src/**/*.scss"],
@@ -92,8 +92,7 @@ exports.default = series(
         copyPHPFilesFromSrc,
         copyPHPFilesFromVendor,
         copyCorePluginFile,
-    ),
-    copyDistToPluginFolder,
+    )
 );
 
 // exports.default = function default() {
