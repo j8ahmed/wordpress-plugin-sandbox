@@ -8,12 +8,12 @@
  * [x] Run update on YouTube feature of plugin using build script.
  *
  * [x] Compile Sass files into minified css in the same folder
- * [ ] Transpile Modern JavaScript into older JavaScript
- * [ ] Compile JavaScript into minified JavaScript
- * [ ] Live reloads:
+ * [x] Transpile Modern JavaScript into older JavaScript
+ * [x] Compile JavaScript into minified JavaScript
+ * [x] Live reloads:
  *     [x] Live reloads of changes in Sass
- *     [ ] Live reloads of changes in JavaScript
- *     [ ] Live reloads of changes in PHP files
+ *     [x] Live reloads of changes in JavaScript
+ *     [x] Live reloads of changes in PHP files
  *
  * Bonus: 
  * [x] Compile PHP to distribution (only copying so far - need to look into compiling it further to make it potentially more effecient to run and perhaps capable of obsfucating the code, idk yet)
@@ -21,23 +21,23 @@
  *  
  */
 
-
-
-const fs = require("fs");
 const { src, dest, watch, parallel, series } = require("gulp");
-const browserify = require("browserify");
 const babelify = require("babelify");
-const source = require("vinyl-source-stream");
+const browserify = require("browserify");
+const browserSync = require("browser-sync");
 const buffer = require("vinyl-buffer");
+const fs = require("fs");
 const rename = require("gulp-rename");
 const sass = require("gulp-sass")(require("sass"));
+const source = require("vinyl-source-stream");
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
 
-// Set the plugin folder absolute file path
+// Set the plugin folder file path
 const pluginFolder = "../../j8ahmed-test-plugin-1"
 
 // Async to allow for importing of ESM autoprefixer package in CommonJS.
+exports.buildStyles = buildStyles;
 async function buildStyles() {
     try{
         const autoprefixer = (await import("./node_modules/gulp-autoprefixer/index.js")).default;
@@ -49,9 +49,14 @@ async function buildStyles() {
             .pipe(autoprefixer({
                 cascade: false
             }))
-            .pipe(rename({suffix: ".min"}))
+            .pipe(rename((path) => {
+                path.dirname = path.dirname.replace("scss", "css");
+                path.extname = ".min.css";
+            }))
+            .pipe(dest("testcss"))
             .pipe(sourcemaps.write("./"))
-            .pipe(dest(pluginFolder + '/src'));
+            .pipe(dest(pluginFolder + '/src'))
+            .pipe(browserSync.stream());
     }catch(e){
         console.error(e, "problem with autoprefixer import");
     }
@@ -71,7 +76,7 @@ async function buildJS() {
             .transform(babelify, {presets: ["@babel/preset-env"]})
             .bundle()
             .on("error", (err) => {
-                console.log("Error : " + err.message); 
+                console.log("Browserify Error : " + err.message); 
             })
             .pipe(source(entry))
             .pipe(rename({basename: "bundle", extname: ".min.js"}))
@@ -80,6 +85,7 @@ async function buildJS() {
             .pipe(uglify())
             .pipe(sourcemaps.write("./"))
             .pipe(dest(pluginFolder))
+            .pipe(browserSync.stream())
     })
 }
 
@@ -87,50 +93,75 @@ function copyCorePluginFile() {
     return src(["./*.php"])
         .pipe(dest(pluginFolder));
 }
-
 function copyPHPFilesFromSrc() {
     return src(["src/**/*.php"])
         .pipe(dest(pluginFolder + '/src'));
 }
-
 function copyPHPFilesFromVendor() {
     return src(["vendor/**/*.php"])
         .pipe(dest(pluginFolder + '/vendor'));
 }
+const copyPHP = parallel(copyCorePluginFile, copyPHPFilesFromSrc, copyPHPFilesFromVendor);
 
-//function copyDistToPluginFolder() {
-//    return src(["dist/**/*"])
-//        .pipe(dest(pluginFolder));
-//}
 
+function reload(done) {
+    browserSync.reload();
+    done();
+}
+
+exports.watchStyles = series(buildStyles, parallel(sync, watchStyles));
 function watchStyles() {
-    watch(["src/**/*.scss"],
+    return watch(["src/**/*.scss"],
         {},
-        buildStyles
+        series(buildStyles, reload)
     );
 }
 
-// exports.watch = function watch() {
-//     watch('./sass/**/*.scss', ['sass']);
-// };
+exports.watchJS = series(buildJS, parallel(sync, watchJS));
+function watchJS() {
+    watch(["src/**/*.?js"],
+        {},
+        series(buildJS, reload)
+    );
+}
 
-exports.buildStyles = buildStyles;
-exports.watchStyles = watchStyles;
+exports.watchPHP = series(copyPHP, parallel(sync, watchPHP));
+function watchPHP() {
+    watch(["./*.php"],
+        {},
+        series(copyCorePluginFile, reload)
+    );
 
-exports.default = series(
-    parallel(
-        buildStyles,
-        copyPHPFilesFromSrc,
-        copyPHPFilesFromVendor,
-        copyCorePluginFile,
-    )
+    watch(["src/**/*.php"],
+        {},
+        series(copyPHPFilesFromSrc, reload)
+    );
+
+    watch(["vendor/**/*.php"],
+        {},
+        series(copyPHPFilesFromVendor, reload)
+    );
+}
+
+exports.sync = sync;
+function sync() {
+    return browserSync.init({
+        open: false,
+        injectChanges: true,
+        proxy: "http://local.blogj8ahmed.com",
+    })
+}
+
+const build = parallel(
+    buildStyles,
+    buildJS,
+    copyPHP
 );
+exports.default = build
 
-// exports.default = function default() {
-//     // The task will be run (concurrently) for every change made
-//     watch('src/*.s', { queue: false }, function(cb) {
-//         // body omitted
-//         cb();
-//     });
-// }
-// testing adding a new line
+const watchAll = parallel(
+    watchStyles,
+    watchJS,
+    watchPHP,
+);
+exports.watch = series(build, parallel(sync, watchAll));

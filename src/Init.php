@@ -17,7 +17,7 @@ final class Init {
             Base\Deactivate::class,
             Base\Uninstall::class,
             Base\SettingsLinks::class,
-            Pages\Admin::class,
+            Pages\Admin\Main::class,
             Test\Settings::class,
             //Controllers\YouTube\Main::class,
         ];

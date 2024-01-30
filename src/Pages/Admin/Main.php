@@ -3,9 +3,9 @@
  *  @package j8ahmed-test-plugin-1
  */
 
-namespace J8ahmed\TestPlugin1\Pages;
+namespace J8ahmed\TestPlugin1\Pages\Admin;
 
-class Admin {
+class Main {
 
     public static function init() {
         // define constants 
@@ -74,8 +74,10 @@ class Admin {
     }
 
     public static function enqueue_scripts(){
-        wp_enqueue_style("j8_plugin_admin_test_styles", plugins_url("assets/styles/admin_test_style.css", PLUGIN_FILE));
-        wp_enqueue_script("j8_plugin_admin_test_scripts", plugins_url("assets/js/admin_test_script.js", PLUGIN_FILE));
+        // wp_enqueue_style("j8_plugin_admin_test_styles", plugins_url("assets/styles/admin_test_style.css", PLUGIN_FILE));
+        // wp_enqueue_script("j8_plugin_admin_test_scripts", plugins_url("assets/js/admin_test_script.js", PLUGIN_FILE));
+        wp_enqueue_script("j8_plugin_admin_test_scripts", plugins_url("src/Pages/Admin/assets/js/bundle.min.js", PLUGIN_FILE));
+        wp_enqueue_style("j8_plugin_admin_test_styles2", plugins_url("src/Pages/Admin/assets/css/style.min.css", PLUGIN_FILE));
     }
 
 }
