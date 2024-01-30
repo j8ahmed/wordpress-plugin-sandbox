@@ -29,6 +29,8 @@ Add a "Usage" section that further details how to use the package / project. Sho
 
 Add a "Contributing" section that details how someone can "run" the tool with more details and potentially help on a technical level.
 
+Developed using `Node v20.11.0` with `npm v10.2.4`
+
 
 ## Bugs / Fixes
 
@@ -51,9 +53,26 @@ Started On: 2024-01-03
 - [WordPress - Roles and Capabilities](https://wordpress.org/documentation/article/roles-and-capabilities/)
 - [phpdotenv - Composer package](https://github.com/vlucas/phpdotenv)
 - [Gulp - DOcs](https://gulpjs.com/)
+
+Sass Build Packages with Gulp:
 - [`gulp-rename` - NPM Docs](https://www.npmjs.com/package/gulp-rename)
 - [`gulp-sass` - NPM Docs](https://www.npmjs.com/package/gulp-sass)
 - [`gulp-autoprefixer` - NPM Docs](https://www.npmjs.com/package/gulp-autoprefixer)
 - [`gulp-sourcemaps` - NPM Docs](https://www.npmjs.com/package/gulp-sourcemaps)
+
+JavaScript Build Packages with Gulp:
+- [`browserify`]()
+- [`babelify`]()
+- [`bundle`]()
+- [`source`]()
+- [`rename`]()
+- [`buffer`]()
+- [`sourcemap`]()
+- [`uglify`]()
+- [`write sourcemap`]()
+- [`write to dist`]()
+
+- []()
+- []()
 - []()
 - []()

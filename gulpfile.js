@@ -7,12 +7,12 @@
  * Tasks:
  * [x] Run update on YouTube feature of plugin using build script.
  *
- * [ ] Compile Sass files into minified css in the same folder
+ * [x] Compile Sass files into minified css in the same folder
  * [ ] Transpile Modern JavaScript into older JavaScript
  * [ ] Compile JavaScript into minified JavaScript
  * [ ] Live reloads:
- *     [ ] Live reloads of changes in JavaScript and Sass
- *     [ ] Live reloads of changes in JavaScript and Sass
+ *     [x] Live reloads of changes in Sass
+ *     [ ] Live reloads of changes in JavaScript
  *     [ ] Live reloads of changes in PHP files
  *
  * Bonus: 
@@ -23,10 +23,16 @@
 
 
 
+const fs = require("fs");
 const { src, dest, watch, parallel, series } = require("gulp");
-const sass = require("gulp-sass")(require("sass"));
+const browserify = require("browserify");
+const babelify = require("babelify");
+const source = require("vinyl-source-stream");
+const buffer = require("vinyl-buffer");
 const rename = require("gulp-rename");
+const sass = require("gulp-sass")(require("sass"));
 const sourcemaps = require("gulp-sourcemaps");
+const uglify = require("gulp-uglify");
 
 // Set the plugin folder absolute file path
 const pluginFolder = "../../j8ahmed-test-plugin-1"
@@ -35,7 +41,6 @@ const pluginFolder = "../../j8ahmed-test-plugin-1"
 async function buildStyles() {
     try{
         const autoprefixer = (await import("./node_modules/gulp-autoprefixer/index.js")).default;
-
         // compile all sass files into css, ignore partials
         return src(["src/**/*.scss", "!src/**/_*.scss"])
             .pipe(sourcemaps.init())
@@ -51,6 +56,32 @@ async function buildStyles() {
         console.error(e, "problem with autoprefixer import");
     }
 };
+
+exports.buildJS = buildJS;
+async function buildJS() {
+    // Present all the entry points for each JavaScript module we want to bundle, transpile, and minify into one JavaScript file.
+    // Similar to Compiling Sass where are required files are included for the main file (i.e. the entry file) to run.
+    // In my case I am identifying all entry points with the "app.mjs" file name. As in each script bundle should be a miniature application.
+    const entries = await fs.readdirSync("./src", {recursive: true})
+        .filter(fn => fn.endsWith("app.mjs"))
+        .map(fn => "src/" + fn.replace(new RegExp("\\\\", "g"), "/"))
+
+    entries.map(entry => {
+        return browserify(entry)
+            .transform(babelify, {presets: ["@babel/preset-env"]})
+            .bundle()
+            .on("error", (err) => {
+                console.log("Error : " + err.message); 
+            })
+            .pipe(source(entry))
+            .pipe(rename({basename: "bundle", extname: ".min.js"}))
+            .pipe(buffer())
+            .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(uglify())
+            .pipe(sourcemaps.write("./"))
+            .pipe(dest(pluginFolder))
+    })
+}
 
 function copyCorePluginFile() {
     return src(["./*.php"])
