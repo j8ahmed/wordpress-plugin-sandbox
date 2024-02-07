@@ -53,7 +53,6 @@ async function buildStyles() {
                 path.dirname = path.dirname.replace("scss", "css");
                 path.extname = ".min.css";
             }))
-            .pipe(dest("testcss"))
             .pipe(sourcemaps.write("./"))
             .pipe(dest(pluginFolder + '/src'))
             .pipe(browserSync.stream());
